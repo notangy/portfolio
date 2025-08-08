@@ -9,7 +9,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { FaHome, FaFileCode } from "react-icons/fa";
 import { IoPersonCircle } from "react-icons/io5";
 
-
 export interface MenuItem {
   label: string;
   path: string;
@@ -31,20 +30,22 @@ const secretRoutes: MenuItem[] = [
 let allItems = [...menuItems, ...secretRoutes];
 
 createRoot(document.getElementById("root")!).render(
-   <BrowserRouter>
-  <div className="flex h-screen w-screen p-5">
-   
+  <BrowserRouter>
+    <div className="flex h-screen w-screen p-5">
       <div className="w-[200px] ">
         <Navbar />
       </div>
       <div className="w-3/4 ">
         <Routes>
           {allItems.map((item) => (
-            <Route key={item.path} path={item.path} element={<item.element />} />
+            <Route
+              key={item.path}
+              path={item.path}
+              element={<item.element />}
+            />
           ))}
         </Routes>
       </div>
-   
-  </div>
-   </BrowserRouter>
+    </div>
+  </BrowserRouter>,
 );
