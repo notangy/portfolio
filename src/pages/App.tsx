@@ -16,7 +16,7 @@ const typingText: string[] = [
 function App() {
   return (
     <>
-      <div className="w-full h-full flex">
+      <div className="w-full h-full flex p-2">
         <div className="w-1/2 ">
           <div className="mb-10">
             <h1>

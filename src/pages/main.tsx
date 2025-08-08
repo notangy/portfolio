@@ -10,7 +10,7 @@ createRoot(document.getElementById("root")!).render(
       <Navbar />
     </div>
     <div className="w-3/4 ">
-      <SnakeGame />
+      <App />
     </div>
   </div>,
 );

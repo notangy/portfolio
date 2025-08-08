@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 #root {
-  padding: 2rem;
+  overflow: hidden;
 }
 
 @keyframes neon-glow {

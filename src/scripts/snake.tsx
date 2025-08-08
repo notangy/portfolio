@@ -2,6 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { LuGrape, LuCherry, LuApple, LuBanana } from "react-icons/lu";
 
+/*
+TODO
+
+- Add a timer for each fruit, if not eaten in 10 seconds it disappears
+- Add hunger mechanic: the longer the snake, the more food it needs to keep going
+Eating fruit resets hunger meter
+- Prettier game board?  
+- High score table at side
+*/
+
 type Coord = [number, number]; // board coordinates
 
 const BOARD_SIZE = 30;
@@ -17,7 +27,13 @@ for (let i = 1; i < INITIAL_SNAKE_SIZE; i++) {
 
 const INITIAL_DIRECTION: Coord = [0, 1];
 
+const ICON_SIZE = 20; // size of each food icon
+
 const fruits = [LuCherry, LuGrape, LuApple, LuBanana];
+
+// Keep track of how many fruits are on the board
+// Each fruit has 10 seconds to be eaten before it disappears
+let fruitsOnBoard = [];
 
 function getRandomFoodPosition(snake: Coord[]): Coord {
   while (true) {
@@ -31,6 +47,8 @@ function getRandomFoodPosition(snake: Coord[]): Coord {
   }
 }
 
+let defaultFoodIcon = <LuApple color="var(--neon-color)" size={ICON_SIZE} />;
+
 const SnakeGame: React.FC = () => {
   const [snake, setSnake] = useState<Coord[]>(INITIAL_SNAKE);
   const [direction, setDirection] = useState<Coord>(INITIAL_DIRECTION);
@@ -41,7 +59,7 @@ const SnakeGame: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [score, setScore] = useState(0);
 
-  const [foodIcon, setFoodIcon] = useState<React.ReactNode>(<LuApple />);
+  const [foodIcon, setFoodIcon] = useState<React.ReactNode>(defaultFoodIcon);
 
   const directionRef = useRef(direction);
   directionRef.current = direction;
@@ -100,7 +118,7 @@ const SnakeGame: React.FC = () => {
         if (ateFood) {
           setFood(getRandomFoodPosition([wrappedHead, ...prev]));
           const Icon = fruits[Math.floor(Math.random() * fruits.length)];
-          setFoodIcon(<Icon color="var(--neon-color)" />);
+          setFoodIcon(<Icon color="var(--neon-color)" size={ICON_SIZE} />);
           setScore((prevScore) => prevScore + 1);
           return [wrappedHead, ...prev]; // grow snake
         }
@@ -120,7 +138,7 @@ const SnakeGame: React.FC = () => {
     setFood(getRandomFoodPosition(INITIAL_SNAKE));
 
     const Icon = fruits[Math.floor(Math.random() * fruits.length)];
-    setFoodIcon(<Icon color="var(--neon-color)"/>);
+    setFoodIcon(<Icon color="var(--neon-color)" size={ICON_SIZE} />);
 
     setGameOver(false);
     setIsPlaying(true);
@@ -138,11 +156,25 @@ const SnakeGame: React.FC = () => {
           </small>
         </p>
 
-        <p className="flex m-4 gap-2 items-center">
+        <p className="m-4 gap-2 items-center">
           <span>Use arrow keys to move the snake.</span>
-          <span className="flex items-center ">Eat the fruit{" "}{fruits.map((IconComponent, idx) => (
-      <IconComponent key={idx} size={16} color="var(--neon-color)" className="ml-2 mr-2" />
-        ))}{" "}to grow!</span>
+          <span className="flex items-center ">
+            Eat the fruit{" "}
+            {fruits.map((IconComponent, idx) => (
+              <IconComponent
+                key={idx}
+                size={16}
+                color="var(--neon-color)"
+                className="ml-2 mr-2"
+              />
+            ))}{" "}
+            to grow and score points!
+          </span>
+
+          <span>
+            The longer your snake gets, the more food it needs to keep going.
+            Keep an eye on its hunger, don't let it starve!
+          </span>
         </p>
       </div>
       <div
@@ -152,7 +184,9 @@ const SnakeGame: React.FC = () => {
           margin: "auto",
         }}
       >
-        <p><b>Score: {score}</b></p>
+        <p>
+          <b>Score: {score}</b>
+        </p>
 
         <div
           style={{
@@ -184,9 +218,7 @@ const SnakeGame: React.FC = () => {
                   backgroundColor: isSnake ? "var(--neon-color)" : "black",
                 }}
               >
-                {isFood
-                  ? foodIcon
-                  : ""}
+                {isFood ? foodIcon : ""}
               </div>
             );
           })}
