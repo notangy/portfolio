@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 
+import { LuGrape, LuCherry, LuApple, LuBanana } from "react-icons/lu";
+
 type Coord = [number, number]; // board coordinates
 
-const BOARD_SIZE = 20;
+const BOARD_SIZE = 30;
 const INITIAL_SNAKE_SIZE = 6; // initial length of the snake
 
 const INITIAL_SNAKE: Coord[] = [[10, 10]];
@@ -14,6 +16,8 @@ for (let i = 1; i < INITIAL_SNAKE_SIZE; i++) {
 }
 
 const INITIAL_DIRECTION: Coord = [0, 1];
+
+const fruits = [LuCherry, LuGrape, LuApple, LuBanana];
 
 function getRandomFoodPosition(snake: Coord[]): Coord {
   while (true) {
@@ -35,6 +39,9 @@ const SnakeGame: React.FC = () => {
   );
   const [gameOver, setGameOver] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [score, setScore] = useState(0);
+
+  const [foodIcon, setFoodIcon] = useState<React.ReactNode>(<LuApple />);
 
   const directionRef = useRef(direction);
   directionRef.current = direction;
@@ -44,21 +51,18 @@ const SnakeGame: React.FC = () => {
     if (!isPlaying || gameOver) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
+      e.preventDefault();
       switch (e.key) {
         case "ArrowUp":
-          e.preventDefault();
           if (directionRef.current[0] !== 1) setDirection([-1, 0]);
           break;
         case "ArrowDown":
-          e.preventDefault();
           if (directionRef.current[0] !== -1) setDirection([1, 0]);
           break;
         case "ArrowLeft":
-          e.preventDefault();
           if (directionRef.current[1] !== 1) setDirection([0, -1]);
           break;
         case "ArrowRight":
-          e.preventDefault();
           if (directionRef.current[1] !== -1) setDirection([0, 1]);
           break;
       }
@@ -67,7 +71,7 @@ const SnakeGame: React.FC = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isPlaying, gameOver]);
 
-  // Game loop
+  // Main game loop
   useEffect(() => {
     if (!isPlaying || gameOver) return;
 
@@ -84,7 +88,7 @@ const SnakeGame: React.FC = () => {
         const wrappedCol = (newHead[1] + BOARD_SIZE) % BOARD_SIZE;
         const wrappedHead: Coord = [wrappedRow, wrappedCol];
 
-        // Collision with self
+        // Checking collision with body
         if (prev.some(([r, c]) => r === wrappedRow && c === wrappedCol)) {
           setGameOver(true);
           setIsPlaying(false);
@@ -95,6 +99,9 @@ const SnakeGame: React.FC = () => {
         const ateFood = wrappedRow === food[0] && wrappedCol === food[1];
         if (ateFood) {
           setFood(getRandomFoodPosition([wrappedHead, ...prev]));
+          const Icon = fruits[Math.floor(Math.random() * fruits.length)];
+          setFoodIcon(<Icon color="var(--neon-color)" />);
+          setScore((prevScore) => prevScore + 1);
           return [wrappedHead, ...prev]; // grow snake
         }
 
@@ -111,8 +118,13 @@ const SnakeGame: React.FC = () => {
     setSnake(INITIAL_SNAKE);
     setDirection(INITIAL_DIRECTION);
     setFood(getRandomFoodPosition(INITIAL_SNAKE));
+
+    const Icon = fruits[Math.floor(Math.random() * fruits.length)];
+    setFoodIcon(<Icon color="var(--neon-color)"/>);
+
     setGameOver(false);
     setIsPlaying(true);
+    setScore(0);
   };
 
   return (
@@ -128,9 +140,9 @@ const SnakeGame: React.FC = () => {
 
         <p className="flex m-4 gap-2 items-center">
           <span>Use arrow keys to move the snake.</span>
-          <span>
-            Eat the <span className="text-red-500">red</span> squares to grow!
-          </span>
+          <span className="flex items-center ">Eat the fruit{" "}{fruits.map((IconComponent, idx) => (
+      <IconComponent key={idx} size={16} color="var(--neon-color)" className="ml-2 mr-2" />
+        ))}{" "}to grow!</span>
         </p>
       </div>
       <div
@@ -140,6 +152,8 @@ const SnakeGame: React.FC = () => {
           margin: "auto",
         }}
       >
+        <p><b>Score: {score}</b></p>
+
         <div
           style={{
             display: "grid",
@@ -149,9 +163,9 @@ const SnakeGame: React.FC = () => {
             width: BOARD_SIZE * 20,
             height: BOARD_SIZE * 20,
             position: "relative",
+            borderRadius: "8px",
           }}
         >
-          {/* Render board */}
           {[...Array(BOARD_SIZE * BOARD_SIZE)].map((_, idx) => {
             const row = Math.floor(idx / BOARD_SIZE);
             const col = idx % BOARD_SIZE;
@@ -159,6 +173,7 @@ const SnakeGame: React.FC = () => {
             const isSnake = snake.some(([r, c]) => r === row && c === col);
             const isFood = food[0] === row && food[1] === col;
 
+            // Each cell of the board including snake and food is rendered below
             return (
               <div
                 key={idx}
@@ -166,9 +181,13 @@ const SnakeGame: React.FC = () => {
                   width: 20,
                   height: 20,
                   boxSizing: "border-box",
-                  backgroundColor: isSnake ? "green" : isFood ? "red" : "black",
+                  backgroundColor: isSnake ? "var(--neon-color)" : "black",
                 }}
-              />
+              >
+                {isFood
+                  ? foodIcon
+                  : ""}
+              </div>
             );
           })}
 
