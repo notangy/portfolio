@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "../index.css";
 import App from "./App";
 import Navbar from "./Navbar";
+import SnakeGame from "../scripts/snake";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -11,7 +12,7 @@ createRoot(document.getElementById("root")!).render(
         <Navbar />
       </div>
       <div className="w-3/4 ">
-        <App />
+        <SnakeGame />
       </div>
     </div>
   </StrictMode>,

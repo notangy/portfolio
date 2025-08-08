@@ -4,7 +4,7 @@ import { FaHome, FaFileCode } from "react-icons/fa";
 import { IoPersonCircle } from "react-icons/io5";
 import React from "react";
 
-type MenuItem = [string, IconType]; 
+type MenuItem = [string, IconType];
 
 const menuItems: Map<string, MenuItem> = new Map([
   ["Home", ["/", FaHome]],
