@@ -1,32 +1,42 @@
-import { useState } from 'react'
-import baba from './assets/baba.png'
-import './App.css'
+import baba from "./assets/baba.png";
+import "./App.css";
+import Typewriter from 'typewriter-effect';
+
+const typingText: string[] = [
+  "Hello world!", 
+  "¡Feliz jueves!", 
+  "if(goingToCrash)\n { dont(); }", 
+  "I am a teapot 🫖", 
+  "Don't panic! (unless you're using Golang)", 
+  "Freedom is the right of all sentient beings.",
+  "Break things fast, fix them faster.",
+  "Robert') DROP TABLE Students;"];
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
+      <div className="flex h-screen w-screen p-5">
+        <div className="w-1/2 ">
+        <div className="mb-10">
+        <h1>
+        <Typewriter options={{
+          strings: typingText, autoStart: true, delay: 50, loop: true}}
+          />
+          </h1>
+          </div>
+          <p>Welcome! This page was made by Nicole to host projects, custom tools and other things she wants to show off.</p>
+          <p>Feel free to poke around using the links above! ☝️</p>
+          </div>
+        <div className="w-1/2">
+        
+          <div className="neon-border float-right ">
+            <img src={baba} className="rounded-full " />
+          </div>
 
-  <div className="neon-border p-8 max-w-sm text-center text-white font-semibold">
-   <img src={baba} className="rounded-full" />
-  </div>
-
-
-      <h1>hello world!</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
