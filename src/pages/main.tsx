@@ -32,10 +32,10 @@ let allItems = [...menuItems, ...secretRoutes];
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <div className="flex h-screen w-screen p-5">
-      <div className="w-[200px] ">
+
         <Navbar />
-      </div>
-      <div className="w-3/4 pt-15">
+
+      <div className="w-full mt-5 pt-15 p-5">
         <Routes>
           {allItems.map((item) => (
             <Route
