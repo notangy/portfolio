@@ -35,7 +35,7 @@ createRoot(document.getElementById("root")!).render(
       <div className="w-[200px] ">
         <Navbar />
       </div>
-      <div className="w-3/4 ">
+      <div className="w-3/4 pt-15">
         <Routes>
           {allItems.map((item) => (
             <Route

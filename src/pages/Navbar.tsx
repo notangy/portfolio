@@ -5,16 +5,18 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="sidebar items-center flex flex-col">
-      <ul>
-        {menuItems.map((item) => (
-          <li key={item.label}>
-            <Link to={item.path}>
-              {React.createElement(item.icon, { className: "mr-2" })}
-              {item.label}
-            </Link>
-          </li>
-        ))}
+    <nav className="navbar w-full h-12 p-10 flex items-center justify-center">
+      <ul className="flex flex-row space-x-4 list-none m-0 p-0">
+        <span className="flex gap-6 text-xl">
+          {menuItems.map((item) => (
+            <li key={item.label} className="gradient padding">
+              <Link to={item.path} className="font-extrabold">
+                {React.createElement(item.icon, { className: "mr-2" })}
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </span>
       </ul>
     </nav>
   );

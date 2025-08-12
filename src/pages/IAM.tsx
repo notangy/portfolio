@@ -40,11 +40,11 @@ function Iam() {
   return (
     <div className="w-full h-full">
       <small>Last updated 08/2025</small>
-      <h1>Who the devil are you?</h1>
       <div className="p-2">
-        <p className="m-4">
+        <h1 className="mb-3">Nice of you to stop by!</h1>
+        <p className="mb-4">
           Nicole is a mid-level fullstack software engineer with 3 years
-          experience in the cybersecurity industry!
+          experience in the cybersecurity industry.
           <br />
           Her skillset is as follows (hover over for names):
         </p>
@@ -71,7 +71,7 @@ function Iam() {
               honors in Computing 🎓
             </li>
             <li>Her favorite Transformer is Soundwave</li>
-            <li>When she isn't coding, she likes to make custom plushies</li>
+            <li>When she isn't coding, she likes to sew custom plushies</li>
             <li>
               She is interested in DevOps and is currently learning Java ☕️
             </li>
