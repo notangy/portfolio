@@ -20,6 +20,7 @@ const INITIAL_SNAKE_SIZE = 6; // initial length of the snake
 const INITIAL_SNAKE: Coord[] = [[10, 10]];
 
 for (let i = 1; i < INITIAL_SNAKE_SIZE; i++) {
+  if (i >= INITIAL_SNAKE_SIZE) break; // prevent out of bounds
   let coord: Coord = [10, 10 - i];
   INITIAL_SNAKE.push(coord);
 }
@@ -31,7 +32,7 @@ const ICON_SIZE = 20; // size of each food icon
 const fruits = [LuCherry, LuGrape, LuApple, LuBanana];
 
 // Keep track of how many fruits are on the board
-// todo Each fruit has 10 seconds to be eaten before it disappears
+// Each fruit has 10 seconds to be eaten before it disappears
 let fruitsOnBoard = [];
 
 function getRandomFoodPosition(snake: Coord[]): Coord {
@@ -122,7 +123,7 @@ const SnakeGame: React.FC = () => {
           return [wrappedHead, ...prev]; // grow snake
         }
 
-        // Move as normal
+        // Move normally
         return [wrappedHead, ...prev.slice(0, -1)];
       });
     }, 150);
@@ -188,12 +189,15 @@ const SnakeGame: React.FC = () => {
         </p>
 
         <div
-          className="grid relative rounded-[8px] border-[2px]"
           style={{
+            display: "grid",
             gridTemplateRows: `repeat(${BOARD_SIZE}, 20px)`,
             gridTemplateColumns: `repeat(${BOARD_SIZE}, 20px)`,
+            border: "2px solid black",
             width: BOARD_SIZE * 20,
             height: BOARD_SIZE * 20,
+            position: "relative",
+            borderRadius: "8px",
           }}
         >
           {[...Array(BOARD_SIZE * BOARD_SIZE)].map((_, idx) => {
@@ -207,7 +211,12 @@ const SnakeGame: React.FC = () => {
             return (
               <div
                 key={idx}
-                className={`box-border w-20 h-20 bg-${isSnake ? "var(--neon-color)" : "black"}`}
+                style={{
+                  width: 20,
+                  height: 20,
+                  boxSizing: "border-box",
+                  backgroundColor: isSnake ? "var(--neon-color)" : "black",
+                }}
               >
                 {isFood ? foodIcon : ""}
               </div>
@@ -217,9 +226,20 @@ const SnakeGame: React.FC = () => {
           {/* Overlay for play / restart */}
           {(!isPlaying || gameOver) && (
             <div
-              className="absolute t-0 l-0 w-full h-full 
-              bg-[rgba(0, 0, 0, 0.5)] 
-              flex-col justify-center align-center flex"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 10,
+                color: "white",
+              }}
             >
               {gameOver ? (
                 <>
@@ -234,6 +254,7 @@ const SnakeGame: React.FC = () => {
                       borderRadius: "8px",
                       border: "none",
                       backgroundColor: "rgba(255, 0, 0, 0.8)",
+                      color: "white",
                     }}
                   >
                     Restart
@@ -250,7 +271,7 @@ const SnakeGame: React.FC = () => {
                     borderRadius: "8px",
                     border: "none",
                     backgroundColor: "rgba(0, 128, 0, 0.8)",
-
+                    color: "white",
                   }}
                 >
                   ▶ Play
