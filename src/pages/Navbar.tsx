@@ -9,7 +9,7 @@ const Navbar = () => {
       <ul className="flex flex-row space-x-4 list-none m-0 p-0">
         <span className="flex gap-6 text-xl">
           {menuItems.map((item) => (
-            <li key={item.label} className="gradient padding">
+            <li key={item.label} className="highlight">
               <Link to={item.path} className="font-extrabold">
                 {React.createElement(item.icon, { className: "mr-2" })}
                 {item.label}
