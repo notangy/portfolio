@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import { LuGrape, LuCherry, LuApple, LuBanana } from "react-icons/lu";
+import {
+  LuGrape,
+  LuCherry,
+  LuApple,
+  LuBanana,
+  LuZoomIn,
+  LuZoomOut,
+} from "react-icons/lu";
 
 /*
 TODO
@@ -10,17 +17,19 @@ TODO
 Eating fruit resets hunger meter
 - Prettier game board?  
 - High score table at side
+- add sound effects
 */
 
 type Coord = [number, number]; // board coordinates
 
-const BOARD_SIZE = 30;
+const DEFAULT_BOARD_SIZE = 20;
+const MIN_BOARD_SIZE = 5;
+const MAX_BOARD_SIZE = 30;
 const INITIAL_SNAKE_SIZE = 6; // initial length of the snake
 
 const INITIAL_SNAKE: Coord[] = [[10, 10]];
 
 for (let i = 1; i < INITIAL_SNAKE_SIZE; i++) {
-  if (i >= INITIAL_SNAKE_SIZE) break; // prevent out of bounds
   let coord: Coord = [10, 10 - i];
   INITIAL_SNAKE.push(coord);
 }
@@ -32,29 +41,31 @@ const ICON_SIZE = 20; // size of each food icon
 const fruits = [LuCherry, LuGrape, LuApple, LuBanana];
 
 // Keep track of how many fruits are on the board
-// Each fruit has 10 seconds to be eaten before it disappears
+// todo Each fruit has 10 seconds to be eaten before it disappears
 let fruitsOnBoard = [];
-
-function getRandomFoodPosition(snake: Coord[]): Coord {
-  while (true) {
-    const pos: Coord = [
-      Math.floor(Math.random() * BOARD_SIZE),
-      Math.floor(Math.random() * BOARD_SIZE),
-    ];
-    if (!snake.some(([r, c]) => r === pos[0] && c === pos[1])) {
-      return pos;
-    }
-  }
-}
 
 let defaultFoodIcon = <LuApple color="var(--neon-color)" size={ICON_SIZE} />;
 
 const SnakeGame: React.FC = () => {
+  function getRandomFoodPosition(snake: Coord[]): Coord {
+    while (true) {
+      const pos: Coord = [
+        Math.floor(Math.random() * boardSize),
+        Math.floor(Math.random() * boardSize),
+      ];
+      if (!snake.some(([r, c]) => r === pos[0] && c === pos[1])) {
+        return pos;
+      }
+    }
+  }
+
   const [snake, setSnake] = useState<Coord[]>(INITIAL_SNAKE);
   const [direction, setDirection] = useState<Coord>(INITIAL_DIRECTION);
+  const [boardSize, setBoardSize] = useState(DEFAULT_BOARD_SIZE);
   const [food, setFood] = useState<Coord>(() =>
     getRandomFoodPosition(INITIAL_SNAKE),
   );
+
   const [gameOver, setGameOver] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [score, setScore] = useState(0);
@@ -102,8 +113,8 @@ const SnakeGame: React.FC = () => {
         ];
 
         // Wrap around edges
-        const wrappedRow = (newHead[0] + BOARD_SIZE) % BOARD_SIZE;
-        const wrappedCol = (newHead[1] + BOARD_SIZE) % BOARD_SIZE;
+        const wrappedRow = (newHead[0] + boardSize) % boardSize;
+        const wrappedCol = (newHead[1] + boardSize) % boardSize;
         const wrappedHead: Coord = [wrappedRow, wrappedCol];
 
         // Checking collision with body
@@ -123,7 +134,7 @@ const SnakeGame: React.FC = () => {
           return [wrappedHead, ...prev]; // grow snake
         }
 
-        // Move normally
+        // Move as normal
         return [wrappedHead, ...prev.slice(0, -1)];
       });
     }, 150);
@@ -157,7 +168,28 @@ const SnakeGame: React.FC = () => {
         </p>
 
         <p className="m-4 gap-2 items-center">
-          <span>Use arrow keys to move the snake.</span>
+          <span className="flex">Use arrow keys to move the snake.</span>
+          <span className="flex items-center gap-2">
+            Use the zoom icons to increase and decrease the size of the board.
+            <LuZoomIn
+              className="cursor-pointer"
+              size={25}
+              onClick={() =>
+                setBoardSize(
+                  boardSize == MAX_BOARD_SIZE ? boardSize : boardSize + 5,
+                )
+              }
+            />
+            <LuZoomOut
+              className="cursor-pointer"
+              size={25}
+              onClick={() =>
+                setBoardSize(
+                  boardSize == MIN_BOARD_SIZE ? boardSize : boardSize - 5,
+                )
+              }
+            />
+          </span>
           <span className="flex items-center ">
             Eat the fruit{" "}
             {fruits.map((IconComponent, idx) => (
@@ -180,7 +212,7 @@ const SnakeGame: React.FC = () => {
       <div
         style={{
           userSelect: "none",
-          width: BOARD_SIZE * 20,
+          width: boardSize * 20,
           margin: "auto",
         }}
       >
@@ -191,18 +223,18 @@ const SnakeGame: React.FC = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateRows: `repeat(${BOARD_SIZE}, 20px)`,
-            gridTemplateColumns: `repeat(${BOARD_SIZE}, 20px)`,
+            gridTemplateRows: `repeat(${boardSize}, 20px)`,
+            gridTemplateColumns: `repeat(${boardSize}, 20px)`,
             border: "2px solid black",
-            width: BOARD_SIZE * 20,
-            height: BOARD_SIZE * 20,
+            width: boardSize * 20,
+            height: boardSize * 20,
             position: "relative",
             borderRadius: "8px",
           }}
         >
-          {[...Array(BOARD_SIZE * BOARD_SIZE)].map((_, idx) => {
-            const row = Math.floor(idx / BOARD_SIZE);
-            const col = idx % BOARD_SIZE;
+          {[...Array(boardSize * boardSize)].map((_, idx) => {
+            const row = Math.floor(idx / boardSize);
+            const col = idx % boardSize;
 
             const isSnake = snake.some(([r, c]) => r === row && c === col);
             const isFood = food[0] === row && food[1] === col;
@@ -253,7 +285,7 @@ const SnakeGame: React.FC = () => {
                       cursor: "pointer",
                       borderRadius: "8px",
                       border: "none",
-                      backgroundColor: "rgba(255, 0, 0, 0.8)",
+                      backgroundColor: "red",
                       color: "white",
                     }}
                   >
@@ -263,15 +295,10 @@ const SnakeGame: React.FC = () => {
               ) : (
                 <button
                   onClick={startGame}
+                  className="bg-green-600 bold cursor-pointer b-0 rounded-[8px]"
                   style={{
                     padding: "12px 24px",
                     fontSize: "20px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    borderRadius: "8px",
-                    border: "none",
-                    backgroundColor: "rgba(0, 128, 0, 0.8)",
-                    color: "white",
                   }}
                 >
                   ▶ Play
