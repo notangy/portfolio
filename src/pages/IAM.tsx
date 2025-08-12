@@ -38,58 +38,50 @@ const hexagonRows = chunk(hexagons, hexagonsPerRow);
 
 function Iam() {
   return (
+    <div className="w-full h-full">
+      <small>Last updated 08/2025</small>
+      <h1>Who the devil are you?</h1>
+      <div className="p-2">
+        <p className="m-4">
+          Nicole is a mid-level fullstack software engineer with 3 years
+          experience in the cybersecurity industry!
+          <br />
+          Her skillset is as follows (hover over for names):
+        </p>
 
-      <div className="w-full h-full">
-        <small>Last updated 08/2025</small>
-        <h1>Who the devil are you?</h1>
-        <div className="p-2">
-          <p className="m-4">
-            Nicole is a mid-level fullstack software engineer with 3 years
-            experience in the cybersecurity industry!
-            <br />
-            Her skillset is as follows (hover over for names):
-          </p>
+        <div className="hexGrid block w-1/2">
+          {hexagonRows.map((row: HexagonProps[], rowIndex: number) => (
+            <div key={rowIndex} className="hexRow flex justify-center">
+              {row.map((hex, index) => (
+                <div key={index} className="mx-1">
+                  <Tooltip title={hex.tooltip} placement="top">
+                    <hex.icon className="items-center m-auto mt-8" size={30} />
+                  </Tooltip>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+        <b>Fun facts!</b>
 
-          <div className="hexGrid block w-1/2">
-            {hexagonRows.map((row: HexagonProps[], rowIndex: number) => (
-              <div key={rowIndex} className="hexRow flex justify-center">
-                {row.map((hex, index) => (
-                  <div key={index} className="mx-1">
-                    <Tooltip title={hex.tooltip} placement="top">
-                      <hex.icon
-                        className="items-center m-auto mt-8"
-                        size={30}
-                      />
-                    </Tooltip>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-            <b>Fun facts!</b>
-
-          <div className="m-[5px] block flex w-1/2">
-          
-
-            <ul className="list-disc m-4">
-              <li>
-                She graduated from Abertay Universtiy in 2020 with first class
-                honors in Computing 🎓
-              </li>
-              <li>Her favorite Transformer is Soundwave</li>
-              <li>When she isn't coding, she likes to make custom plushies</li>
-              <li>
-                She is interested in DevOps and is currently learning Java ☕️
-              </li>
-              <li>
-                Scared of spiders, but doesn't mind <a href="./snake">snakes</a>
-                .
-              </li>
-            </ul>
-          </div>
+        <div className="m-[5px] block flex w-1/2">
+          <ul className="list-disc m-4">
+            <li>
+              She graduated from Abertay Universtiy in 2020 with first class
+              honors in Computing 🎓
+            </li>
+            <li>Her favorite Transformer is Soundwave</li>
+            <li>When she isn't coding, she likes to make custom plushies</li>
+            <li>
+              She is interested in DevOps and is currently learning Java ☕️
+            </li>
+            <li>
+              Scared of spiders, but doesn't mind <a href="./snake">snakes.</a>
+            </li>
+          </ul>
         </div>
       </div>
-
+    </div>
   );
 }
 
