@@ -41,10 +41,13 @@ function App() {
             </h1>
           </div>
           <p>
-            Welcome! This page was made by <a href="/IAM">Nicole</a> to host projects, custom tools
-            and other things she wants to show off.
+            Welcome! This page was made by <a href="/IAM">Nicole</a> to host
+            projects, custom tools and other things she wants to show off.
           </p>
-          <p className="flex gap-2">Feel free to poke around using the links up there! <LuPointer /> </p>
+          <p className="flex gap-2">
+            Feel free to poke around using the links up there!{" "}
+            <LuPointer />{" "}
+          </p>
         </div>
         <div className="w-1/2">
           <div className="neon-border float-right mr-8rem">

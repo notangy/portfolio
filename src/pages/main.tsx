@@ -5,7 +5,7 @@ import App from "./App";
 import Navbar from "../components/Navbar";
 import SnakeGame from "./snake";
 import Iam from "./IAM";
-import Projects from './Projects'
+import Projects from "./Projects";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 

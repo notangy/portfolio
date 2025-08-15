@@ -55,7 +55,10 @@ function Iam() {
               {row.map((hex, index) => (
                 <div key={index} className="mx-1">
                   <Tooltip title={hex.tooltip} placement="top">
-                    <hex.icon className="items-center m-auto mt-8 text-white" size={30} />
+                    <hex.icon
+                      className="items-center m-auto mt-8 text-white"
+                      size={30}
+                    />
                   </Tooltip>
                 </div>
               ))}
