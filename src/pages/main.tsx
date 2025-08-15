@@ -5,27 +5,25 @@ import App from "./App";
 import Navbar from "../components/Navbar";
 import SnakeGame from "./snake";
 import Iam from "./IAM";
+import Projects from './Projects'
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { FaHome, FaFileCode } from "react-icons/fa";
-import { IoPersonCircle } from "react-icons/io5";
 
 export interface MenuItem {
   label: string;
   path: string;
-  icon: React.ComponentType<any>;
   element: React.ComponentType<any>;
 }
 
 export const menuItems: MenuItem[] = [
-  { label: "Home", path: "/", icon: FaHome, element: App },
-  { label: "About", path: "/iam", icon: IoPersonCircle, element: Iam },
-  { label: "Projects", path: "/projects", icon: FaFileCode, element: App },
-  { label: "Links", path: "/links", icon: FaFileCode, element: App },
+  { label: "Home", path: "/", element: App },
+  { label: "About", path: "/iam", element: Iam },
+  { label: "Projects", path: "/projects", element: Projects },
+  { label: "Links", path: "/links", element: App },
 ];
 
 const secretRoutes: MenuItem[] = [
-  { label: "Snake Game", path: "/snake", icon: FaFileCode, element: SnakeGame },
+  { label: "Snake Game", path: "/snake", element: SnakeGame },
   // Add more secret routes here if needed
 ];
 
