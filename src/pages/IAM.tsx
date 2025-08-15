@@ -10,7 +10,7 @@ import {
 } from "react-icons/si";
 import { FaGolang } from "react-icons/fa6";
 import React from "react";
-import "../Iam.css";
+import "../css/Iam.css";
 import chunk from "lodash/chunk";
 import { Tooltip } from "@mui/material";
 
@@ -55,7 +55,7 @@ function Iam() {
               {row.map((hex, index) => (
                 <div key={index} className="mx-1">
                   <Tooltip title={hex.tooltip} placement="top">
-                    <hex.icon className="items-center m-auto mt-8" size={30} />
+                    <hex.icon className="items-center m-auto mt-8 text-white" size={30} />
                   </Tooltip>
                 </div>
               ))}

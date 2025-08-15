@@ -1,6 +1,7 @@
 import baba from "../assets/baba.png";
-import "../App.css";
+import "../css/App.css";
 import Typewriter from "typewriter-effect";
+import { LuPointer } from "react-icons/lu";
 
 const typingText: string[] = [
   "Hello world!",
@@ -11,6 +12,15 @@ const typingText: string[] = [
   "Freedom is the right of all sentient beings.",
   "Break things fast, fix them faster.",
   "Robert') DROP TABLE Students;",
+];
+
+const spinningWords = [
+  "Software Engineer",
+  "Frontend",
+  "Backend",
+  "UI/UX",
+  "DevOps",
+  "CI/CD",
 ];
 
 function App() {
@@ -31,10 +41,10 @@ function App() {
             </h1>
           </div>
           <p>
-            Welcome! This page was made by Nicole to host projects, custom tools
+            Welcome! This page was made by <a href="/IAM">Nicole</a> to host projects, custom tools
             and other things she wants to show off.
           </p>
-          <p>👈 Feel free to poke around using the links over here!</p>
+          <p className="flex gap-2">Feel free to poke around using the links up there! <LuPointer /> </p>
         </div>
         <div className="w-1/2">
           <div className="neon-border float-right mr-8rem">

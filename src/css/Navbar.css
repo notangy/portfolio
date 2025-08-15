@@ -8,6 +8,7 @@
   background-color: black;
   position: fixed;
   font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 18pt;
 }
 
 .navbar ul li {
@@ -31,15 +32,35 @@
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0.1em;
-  height: 0.8em;
-  width: 0;
-  background-color: magenta;
+  bottom: 0.6em;
+  height: 0.4em;
+  background-color: var(--neon-color);
   z-index: -1;
-  transition: height 0.3s ease;
   width: 100%;
+
+  transition: height 0.3s ease;
 }
 
 .highlight:hover::after {
-  height: 100%;
+  height: 60%;
+  bottom: 0.5em;
 }
+
+.logo-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border: 5px solid var(--neon-color);
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #ffffff;
+  }
+
+.logo-box sub {
+    font-size: 1rem;
+    vertical-align: sub;
+  }

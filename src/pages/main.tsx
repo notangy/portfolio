@@ -1,9 +1,10 @@
 import { createRoot } from "react-dom/client";
-import "../index.css";
+import "../css/index.css";
+
 import App from "./App";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 import SnakeGame from "./snake";
-import Iam from "./Iam";
+import Iam from "./IAM";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { FaHome, FaFileCode } from "react-icons/fa";
@@ -20,6 +21,7 @@ export const menuItems: MenuItem[] = [
   { label: "Home", path: "/", icon: FaHome, element: App },
   { label: "About", path: "/iam", icon: IoPersonCircle, element: Iam },
   { label: "Projects", path: "/projects", icon: FaFileCode, element: App },
+  { label: "Links", path: "/links", icon: FaFileCode, element: App },
 ];
 
 const secretRoutes: MenuItem[] = [
@@ -32,9 +34,7 @@ let allItems = [...menuItems, ...secretRoutes];
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <div className="flex h-screen w-screen p-5">
-
-        <Navbar />
-
+      <Navbar />
       <div className="w-full mt-5 pt-15 p-5">
         <Routes>
           {allItems.map((item) => (
