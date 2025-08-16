@@ -1,10 +1,7 @@
 import baba from "../assets/baba.png";
-import "../css/App.css";
+import "../css/Home.css";
 import Typewriter from "typewriter-effect";
 import { LuPointer } from "react-icons/lu";
-import Iam from "./IAM";
-import Projects from "./Projects";
-import { Links } from "react-router-dom";
 
 const typingText: string[] = [
   "Hello world!",

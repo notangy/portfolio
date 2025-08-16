@@ -19,7 +19,7 @@ export const menuItems: MenuItem[] = [
   { label: "Home", path: "home", element: Home },
   { label: "About", path: "iam", element: Iam },
   { label: "Projects", path: "projects", element: Projects },
-  { label: "Links", path: "links", element: Home },
+  { label: "Links", path: "links", element: Links },
 ];
 
 const secretRoutes: MenuItem[] = [
