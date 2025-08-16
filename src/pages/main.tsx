@@ -37,18 +37,11 @@ createRoot(document.getElementById("root")!).render(
             path="/"
             element={
               <div>
-                <section id="home">
-                  <Home />
-                </section>
-                <section id="iam">
-                  <Iam />
-                </section>
-                <section id="services">
-                  <Projects />
-                </section>
-                <section id="contact">
-                  <Links />
-                </section>
+                {menuItems.map((item) => (
+                  <section id={item.path} key={item.path}>
+                    <item.element />
+                  </section>
+                ))}
               </div>
             }
           />

@@ -108,8 +108,8 @@ const SnakeGame: React.FC = () => {
 
     const hungerInterval = setInterval(() => {
       setHunger((prev) => {
-      const decreaseAmount = score * 0.3;
-      const nextHunger = Math.max(prev - decreaseAmount, 0);
+        const decreaseAmount = score * 0.3;
+        const nextHunger = Math.max(prev - decreaseAmount, 0);
 
         if (nextHunger === 0) {
           setGameOver(true);

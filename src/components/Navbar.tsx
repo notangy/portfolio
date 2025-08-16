@@ -5,6 +5,9 @@ const scrollToSection = (id: string) => {
   const element = document.getElementById(id);
   if (element) {
     element.scrollIntoView({ behavior: "smooth" });
+  } else {
+    // If element doesn't exist, redirect to home
+    window.location.href = "/";
   }
 };
 
