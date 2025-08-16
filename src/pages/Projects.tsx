@@ -1,5 +1,9 @@
 const projectList = [
   {
+    name: "This website!",
+    description: "React, Typescript, Tailwind CSS...",
+  },
+  {
     name: "DisClone",
     description:
       "Trying out AI fine-tuning by training a base model on Discord chat logs.",

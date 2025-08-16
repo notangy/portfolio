@@ -38,7 +38,7 @@ const hexagonRows = chunk(hexagons, hexagonsPerRow);
 
 function Iam() {
   return (
-    <div className="w-full h-full">
+    <div>
       <small className="text-white">Last updated 08/2025</small>
       <div className="p-2">
         <h1 className="mb-3">Nice of you to stop by!</h1>

@@ -1,13 +1,13 @@
 import { createRoot } from "react-dom/client";
 import "../css/index.css";
 
-import App from "./App";
+import Home from "./Home";
 import Navbar from "../components/Navbar";
 import SnakeGame from "./snake";
 import Iam from "./IAM";
 import Projects from "./Projects";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Links from "./Links";
 
 export interface MenuItem {
   label: string;
@@ -16,10 +16,10 @@ export interface MenuItem {
 }
 
 export const menuItems: MenuItem[] = [
-  { label: "Home", path: "/", element: App },
-  { label: "About", path: "/iam", element: Iam },
-  { label: "Projects", path: "/projects", element: Projects },
-  { label: "Links", path: "/links", element: App },
+  { label: "Home", path: "home", element: Home },
+  { label: "About", path: "iam", element: Iam },
+  { label: "Projects", path: "projects", element: Projects },
+  { label: "Links", path: "links", element: Home },
 ];
 
 const secretRoutes: MenuItem[] = [
@@ -27,15 +27,32 @@ const secretRoutes: MenuItem[] = [
   // Add more secret routes here if needed
 ];
 
-let allItems = [...menuItems, ...secretRoutes];
-
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
-    <div className="flex h-screen w-screen p-5">
+    <div className="flex h-screen w-screen p-4 overflow-scroll">
       <Navbar />
-      <div className="w-full mt-5 pt-15 p-5">
+      <div className="w-full">
         <Routes>
-          {allItems.map((item) => (
+          <Route
+            path="/"
+            element={
+              <div>
+                <section id="home">
+                  <Home />
+                </section>
+                <section id="iam">
+                  <Iam />
+                </section>
+                <section id="services">
+                  <Projects />
+                </section>
+                <section id="contact">
+                  <Links />
+                </section>
+              </div>
+            }
+          />
+          {secretRoutes.map((item) => (
             <Route
               key={item.path}
               path={item.path}

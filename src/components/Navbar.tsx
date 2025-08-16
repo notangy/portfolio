@@ -1,24 +1,30 @@
 import "../css/Navbar.css";
-import React from "react";
-import { menuItems } from "../pages/main.tsx"; // Assuming you have a separate file for menu items
-import { Link } from "react-router-dom";
+import { menuItems } from "../pages/main.tsx";
+
+const scrollToSection = (id: string) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
 const Navbar = () => {
   return (
-    <nav className="navbar w-full h-12 p-10 flex items-center relative">
-    <div className="logo-box text-2xl font-bold">
-      <span>N</span>
-      <sub className="text-xs top-3">2</sub>
-    </div>
+    <nav className="navbar w-full h-12 p-15 flex items-center relative">
+      <div className="logo-box text-2xl font-bold">
+        <span>N</span>
+        <sub className="text-xs top-3">2</sub>
+        <div className="atom" />
+      </div>
       <ul className="flex flex-row space-x-6 list-none m-0 p-0 mx-auto gap-4">
         {menuItems.map((item) => (
           <li key={item.label} className="highlight">
-            <Link
-              to={item.path}
+            <button
               className="font-extrabold flex items-center gap-2"
+              onClick={() => scrollToSection(item.path)}
             >
               {item.label}
-            </Link>
+            </button>
           </li>
         ))}
       </ul>

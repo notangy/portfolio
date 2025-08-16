@@ -23,8 +23,8 @@ Eating fruit resets hunger meter
 type Coord = [number, number]; // board coordinates
 
 const DEFAULT_BOARD_SIZE = 20;
-const MIN_BOARD_SIZE = 5;
-const MAX_BOARD_SIZE = 30;
+const MIN_BOARD_SIZE = 10;
+const MAX_BOARD_SIZE = 40;
 const INITIAL_SNAKE_SIZE = 6; // initial length of the snake
 
 const INITIAL_SNAKE: Coord[] = [[10, 10]];
@@ -66,6 +66,8 @@ const SnakeGame: React.FC = () => {
     getRandomFoodPosition(INITIAL_SNAKE),
   );
 
+  const [hunger, setHunger] = useState<number>(100);
+
   const [gameOver, setGameOver] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [score, setScore] = useState(0);
@@ -100,6 +102,27 @@ const SnakeGame: React.FC = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isPlaying, gameOver]);
 
+  // Separate loop for managing hunger decrease
+  useEffect(() => {
+    if (!isPlaying || gameOver) return;
+
+    const hungerInterval = setInterval(() => {
+      setHunger((prev) => {
+      const decreaseAmount = score * 0.3;
+      const nextHunger = Math.max(prev - decreaseAmount, 0);
+
+        if (nextHunger === 0) {
+          setGameOver(true);
+          setIsPlaying(false);
+        }
+
+        return nextHunger;
+      });
+    }, 1000);
+
+    return () => clearInterval(hungerInterval);
+  }, [isPlaying, gameOver, score]);
+
   // Main game loop
   useEffect(() => {
     if (!isPlaying || gameOver) return;
@@ -131,6 +154,7 @@ const SnakeGame: React.FC = () => {
           const Icon = fruits[Math.floor(Math.random() * fruits.length)];
           setFoodIcon(<Icon color="var(--neon-color)" size={ICON_SIZE} />);
           setScore((prevScore) => prevScore + 1);
+          setHunger((prev) => Math.min(prev + 20, 100)); // restore 20 hunger
           return [wrappedHead, ...prev]; // grow snake
         }
 
@@ -154,18 +178,19 @@ const SnakeGame: React.FC = () => {
     setGameOver(false);
     setIsPlaying(true);
     setScore(0);
+    setHunger(100);
   };
 
   return (
     <>
-      <div>
-        <p className="flex m-4 gap-2 items-center">
+      <div className="pt-10 mt-20 overflow-scroll">
+        <div className="flex m-4 gap-2 items-center">
           <h2>You found the secret snake game!!</h2>
           <small>
             Ironically not written in Python... backend server calls are
             expensive!
           </small>
-        </p>
+        </div>
 
         <p className="m-4 gap-2 items-center">
           <span className="flex">Use arrow keys to move the snake.</span>
@@ -213,13 +238,29 @@ const SnakeGame: React.FC = () => {
         style={{
           userSelect: "none",
           width: boardSize * 20,
-          margin: "auto",
+          paddingBottom: "30px",
+          margin: "20px",
         }}
       >
-        <p>
-          <b>Score: {score}</b>
-        </p>
+        <div className="m-4">
+          <p>
+            <b>Score: {score}</b>
+          </p>
+          <div className="flex items-center gap-3">
+            <b>Hunger:</b>
+            <div style={{ width: "100px", border: "1px solid black" }}>
+              <div
+                style={{
+                  width: `${hunger}%`,
+                  height: "10px",
+                  backgroundColor: "green",
+                }}
+              />
+            </div>
+          </div>
+        </div>
 
+        {/* Actual board is here */}
         <div
           style={{
             display: "grid",

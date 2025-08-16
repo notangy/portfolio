@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* Applies to all elements in app */
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,16 +13,33 @@
 
   --neon-color: rgb(255, 6, 147); /* default neon magenta */
 
+  --navbar-height: 3rem;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  margin: 0;
+button {
+  cursor: pointer;
+}
+
+section {
+  scroll-margin-top: 1rem; /* same height as navbar */
+  padding: 2rem; /* optional padding */
+  min-height: 100vh; /* each section takes full viewport height */
   display: flex;
-  place-items: center;
+  flex-direction: column;
+  justify-content: center; /* vertically center content */
+}
+
+main {
+  scroll-snap-type: y mandatory; /* optional smooth snap */
+  overflow-y: scroll;
+}
+
+body {
   min-width: 320px;
   min-height: 100vh;
 }
@@ -28,25 +47,6 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
