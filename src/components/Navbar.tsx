@@ -1,5 +1,4 @@
 import "../css/Navbar.css";
-import { menuItems } from "../pages/main.tsx";
 import { useState } from "react";
 import { LuMenu, LuX } from "react-icons/lu";
 import NavLinks from "./NavLinks.tsx";
