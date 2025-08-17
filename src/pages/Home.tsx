@@ -2,6 +2,18 @@ import "../css/Home.css";
 import Typewriter from "typewriter-effect";
 import { LuPointer } from "react-icons/lu";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "../css/swiperOverride.css";
+
+import Alfie from "../assets/alfie.jpg";
+import Fancy from "../assets/fancy.jpg";
+
 const typingText: string[] = [
   "Hello world!",
   "¡Feliz jueves!",
@@ -11,6 +23,21 @@ const typingText: string[] = [
   "Freedom is the right of all sentient beings.",
   "Break things fast, fix them faster.",
   "Robert') DROP TABLE Students;",
+];
+
+const imageCarousel = [
+  {
+    url: "https://github.com/notangy.png",
+    caption: "My current GitHub avatar",
+  },
+  {
+    url: Alfie,
+    caption: "Me & Alfie",
+  },
+  {
+    url: Fancy,
+    caption: "From my wedding!",
+  },
 ];
 
 // const spinningWords = [
@@ -24,8 +51,8 @@ const typingText: string[] = [
 
 function Home() {
   return (
-    <div className="flex flex-col md:flex-row items-center md:items-start">
-      <div className="w-1/2 ">
+    <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
+      <div className="w-full md:w-1/2">
         <div className="mb-10">
           <h1>
             <Typewriter
@@ -52,17 +79,38 @@ function Home() {
         </p>
       </div>
 
-      {/* Image Div here */}
-      <div className="w-full md:w-1/2 flex flex-col items-center sm:mt-20 md:items-end md:mr-40 mb-10 md:mb-0">
-        <div className="neon-border rounded-[20%] inline-block">
+      {/* <div className="neon-border rounded-[20%] inline-block">
           <img
             src={"https://github.com/notangy.png"}
-            className="rounded-[20%] block md:w-64 md:h-64 lg:w-100 lg:h-100"
+            
           />
         </div>
-        <p className="mt-10 text-center text-sm lg:mr-30">
-          Image: my current GitHub avatar
-        </p>
+        */}
+
+      <div className="w-full md:w-1/2 p-5">
+        <Swiper
+          modules={[Navigation]}
+          slidesPerView={1}
+          navigation
+          className="min-w-[200px]"
+          loop={true}
+        >
+          {imageCarousel.map((img, index) => (
+            <SwiperSlide
+              key={index}
+              className="flex justify-center items-center p-20"
+            >
+              <div className="overflow-hidden rounded-[20%] neon-border w-full ">
+                <img
+                  src={img.url}
+                  alt={`Avatar ${index + 1}`}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <p className="mt-3 text-center text-sm">Image: {img.caption}</p>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );

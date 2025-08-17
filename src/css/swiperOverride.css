@@ -1,0 +1,35 @@
+.swiper-button-next,
+.swiper-button-prev {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 50%;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: var(--neon-color);
+  font-size: 40px;
+}
+
+.swiper-button-prev {
+  left: -5px;
+}
+
+.swiper-button-next {
+  right: -5px;
+}
+
+/* Glow effect on hover */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  text-shadow: 0 0 10px #e91e63, 0 0 10px #e91e63, 0 0 10px #e91e63;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.swiper-wrapper {
+  display: flex;
+  justify-content: center; /* center slides horizontally */
+}
