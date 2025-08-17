@@ -4,7 +4,7 @@ const projectList = [
     description: `Experimenting with AI fine-tuning. 
       Training data comes from Discord chat logs of a given user, 
       and results in a bot that can generate text based on these logs.`,
-    tech: ["Python", "Huggingface"],
+    tech: ["Python", "Huggingface", "LoRA"],
     links: [{ label: "GitHub", url: "https://github.com/notangy/DisClone" }],
   },
   {
@@ -12,6 +12,12 @@ const projectList = [
     description: `Studies show that people spend more time choosing something to watch than actually watching things.
       This is a small helper site to track movie/show history, offer recommendations, and other neat things.`,
     tech: ["TypeScript", "React", "Tailwind CSS"],
+    links: [],
+  },
+  {
+    title: "AO3lytics",
+    description: `A CLI tool and self-hosted dashboard to host AO3 user statistics.`,
+    tech: ["Python", "Flask", "MongoDB"],
     links: [],
   },
   {

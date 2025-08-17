@@ -26,12 +26,12 @@ button {
 }
 
 section {
-  scroll-margin-top: 1rem; /* same height as navbar */
-  padding: 2rem; /* optional padding */
-  min-height: 100vh; /* each section takes full viewport height */
+  scroll-margin-top: var(--navbar-height);
+  padding: 1rem;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* vertically center content */
+  justify-content: center;
 }
 
 main {

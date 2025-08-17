@@ -80,7 +80,7 @@ function Iam() {
               She graduated from Abertay University in 2020 with first class
               honors in Computing 🎓
             </li>
-            <li>Her favorite Transformer is Soundwave</li>
+            <li>Her favorite Transformer is Soundwave 📼</li>
             <li>When she isn't coding, she likes to sew custom plushies</li>
             <li>
               She is interested in DevOps and is currently learning Java ☕️
