@@ -7,7 +7,7 @@ const scrollToSection = (id: string) => {
     element.scrollIntoView({ behavior: "smooth" });
   } else {
     // If element doesn't exist, redirect to home
-    window.location.href = "/";
+    window.location.href = "/portfolio";
   }
 };
 
