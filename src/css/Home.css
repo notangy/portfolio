@@ -11,18 +11,12 @@
 @keyframes neon-glow {
   0%,
   100% {
-    box-shadow:
-      0 0 8px var(--neon-color),
-      0 0 16px var(--neon-color),
-      0 0 24px var(--neon-color),
-      0 0 48px var(--neon-color);
+    box-shadow: 0 0 8px var(--neon-color), 0 0 16px var(--neon-color),
+      0 0 24px var(--neon-color), 0 0 48px var(--neon-color);
   }
   50% {
-    box-shadow:
-      0 0 12px var(--neon-color),
-      0 0 24px var(--neon-color),
-      0 0 36px var(--neon-color),
-      0 0 60px var(--neon-color);
+    box-shadow: 0 0 12px var(--neon-color), 0 0 24px var(--neon-color),
+      0 0 36px var(--neon-color), 0 0 60px var(--neon-color);
   }
 }
 
@@ -31,6 +25,7 @@
   border-color: rgb(
     var(--neon-color-rgb, 0, 255, 255) / var(--tw-border-opacity)
   );
+  display: inline-block; /* shrink-wrap to the image */
   border-width: 2px;
   border-style: solid var(--neon-color);
   border-radius: 50%;

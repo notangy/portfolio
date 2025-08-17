@@ -1,4 +1,3 @@
-import baba from "../assets/baba.png";
 import "../css/Home.css";
 import Typewriter from "typewriter-effect";
 import { LuPointer } from "react-icons/lu";
@@ -45,13 +44,20 @@ function Home() {
         </p>
         <p className="flex gap-2">
           Feel free to poke around using the links up there <LuPointer /> or
-          scroll if you'd prefer!
+          scroll down if you'd prefer!
         </p>
       </div>
-      <div className="w-1/2">
-        <div className="neon-border float-right mr-8rem">
-          <img src={baba} className="rounded-full " />
+
+      <div className="w-1/2 flex flex-col items-end mr-40">
+        <div className="neon-border rounded-full inline-block">
+          <img
+            src={"https://github.com/notangy.png"}
+            className="rounded-full block"
+          />
         </div>
+        <p className="mt-10 text-center text-sm mr-20">
+          Pictured above: my current GitHub avatar
+        </p>
       </div>
     </div>
   );

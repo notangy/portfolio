@@ -81,7 +81,7 @@ function Iam() {
               honors in Computing 🎓
             </li>
             <li>Her favorite Transformer is Soundwave 📼</li>
-            <li>When she isn't coding, she likes to sew custom plushies</li>
+            <li>When she isn't coding, she likes to sew custom plushies 🪡</li>
             <li>
               She is interested in DevOps and is currently learning Java ☕️
             </li>
@@ -90,7 +90,7 @@ function Iam() {
               <a href="./snake" className="underline text-blue-400">
                 snakes
               </a>
-              .
+              🐍
             </li>
           </ul>
         </div>

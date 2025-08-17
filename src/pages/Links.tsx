@@ -26,7 +26,7 @@ export default function Links() {
     <section id="contact" className="py-16 ">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-8">
-          Thanks for scrollingt this far!
+          Thanks for scrolling this far!
         </h2>
         <p className="text-gray-600 mb-12">
           I’m always open to collaborations, new opportunities, or just a

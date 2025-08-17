@@ -16,7 +16,7 @@ const projectList = [
   },
   {
     title: "AO3lytics",
-    description: `A CLI tool and self-hosted dashboard to host AO3 user statistics.`,
+    description: `A CLI tool and self-hosted dashboard to aggregate AO3 user statistics.`,
     tech: ["Python", "Flask", "MongoDB"],
     links: [],
   },
