@@ -14,6 +14,7 @@ import "../css/Iam.css";
 import chunk from "lodash/chunk";
 import { Tooltip } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import Tangy from "../assets/tangy.gif";
 
 interface HexagonProps {
   tooltip: string;
@@ -42,7 +43,16 @@ function Iam() {
     <div className=" mx-auto p-4">
       <small className="block text-gray-400 mb-4">Last updated 08/2025</small>
 
-      <h1 className="text-3xl font-bold mb-3">Nice of you to stop by!</h1>
+      <h1 className="text-3xl font-bold mb-3 flex items-center gap-6">
+        Nice of you to stop by!{" "}
+        <img
+          src={Tangy}
+          style={{
+            width: "100px",
+            height: "100px",
+          }}
+        />
+      </h1>
       <p className="text-lg mb-6">
         Nicole is a mid-level fullstack software engineer with 3 years
         experience in the cybersecurity industry.

@@ -11,12 +11,17 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
-  --neon-color: rgb(255, 6, 147); /* default neon magenta */
+  --neon-color: rgb(
+    255,
+    6,
+    147
+  ); /* default neon magenta TODO make this changeable */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: none;
 }
 
 button {

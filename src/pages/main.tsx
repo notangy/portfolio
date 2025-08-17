@@ -1,4 +1,6 @@
 import { createRoot } from "react-dom/client";
+import CustomCursor from "../components/Cursor";
+
 import "../css/index.css";
 
 import Home from "./Home";
@@ -29,6 +31,7 @@ const secretRoutes: MenuItem[] = [
 
 createRoot(document.getElementById("root")!).render(
   <HashRouter>
+    <CustomCursor />
     <div className="flex h-screen w-screen p-4 overflow-scroll">
       <Navbar />
       <div className="w-full">

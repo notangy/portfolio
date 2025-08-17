@@ -54,14 +54,14 @@ function Home() {
 
       {/* Image Div here */}
       <div className="w-full md:w-1/2 flex flex-col items-center sm:mt-20 md:items-end md:mr-40 mb-10 md:mb-0">
-        <div className="neon-border rounded-full inline-block">
+        <div className="neon-border rounded-[20%] inline-block">
           <img
             src={"https://github.com/notangy.png"}
-            className="rounded-full block md:w-64 md:h-64 lg:w-80 lg:h-80"
+            className="rounded-[20%] block md:w-64 md:h-64 lg:w-100 lg:h-100"
           />
         </div>
-        <p className="mt-10 text-center text-sm lg:mr-10">
-          Pictured above: my current GitHub avatar
+        <p className="mt-10 text-center text-sm lg:mr-30">
+          Image: my current GitHub avatar
         </p>
       </div>
     </div>

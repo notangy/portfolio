@@ -28,6 +28,6 @@
   display: inline-block; /* shrink-wrap to the image */
   border-width: 2px;
   border-style: solid var(--neon-color);
-  border-radius: 50%;
   animation: neon-glow 2s ease-in-out infinite;
+  border-radius: 20%;
 }
