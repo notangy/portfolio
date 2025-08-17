@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 import SnakeGame from "./snake";
 import Iam from "./IAM";
 import Projects from "./Projects";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Links from "./Links";
 
 export interface MenuItem {
@@ -28,7 +28,7 @@ const secretRoutes: MenuItem[] = [
 ];
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
+  <HashRouter>
     <div className="flex h-screen w-screen p-4 overflow-scroll">
       <Navbar />
       <div className="w-full">
@@ -55,5 +55,5 @@ createRoot(document.getElementById("root")!).render(
         </Routes>
       </div>
     </div>
-  </BrowserRouter>,
+  </HashRouter>
 );
