@@ -32,7 +32,7 @@ function Home() {
               options={{
                 strings: typingText,
                 autoStart: true,
-                delay: 50,
+                delay: 90,
                 loop: true,
               }}
             />

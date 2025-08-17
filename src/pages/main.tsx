@@ -23,7 +23,7 @@ export const menuItems: MenuItem[] = [
 ];
 
 const secretRoutes: MenuItem[] = [
-  { label: "Snake Game", path: "/snake", element: SnakeGame },
+  { label: "Snake Game", path: "snake", element: SnakeGame },
   // Add more secret routes here if needed
 ];
 
@@ -46,11 +46,7 @@ createRoot(document.getElementById("root")!).render(
             }
           />
           {secretRoutes.map((item) => (
-            <Route
-              key={item.path}
-              path={item.path}
-              element={<item.element />}
-            />
+            <Route path={item.path} element={<item.element />} />
           ))}
         </Routes>
       </div>

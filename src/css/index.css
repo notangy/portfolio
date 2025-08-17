@@ -13,8 +13,6 @@
 
   --neon-color: rgb(255, 6, 147); /* default neon magenta */
 
-  --navbar-height: 3rem;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,12 +24,13 @@ button {
 }
 
 section {
-  scroll-margin-top: var(--navbar-height);
+  scroll-margin-top: 4rem;
   padding: 1rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 6em;
 }
 
 main {

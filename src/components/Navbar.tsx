@@ -11,9 +11,9 @@ const scrollToSection = (id: string) => {
   }
 };
 
-const Navbar = () => {
+export default function Navbar() {
   return (
-    <nav className="navbar w-full h-12 p-15 flex items-center relative">
+    <nav className="navbar w-full h-12 p-15 flex items-center relative mb-20">
       <div className="logo-box text-2xl font-bold">
         <span>N</span>
         <sub className="text-xs top-3">2</sub>
@@ -33,6 +33,4 @@ const Navbar = () => {
       </ul>
     </nav>
   );
-};
-
-export default Navbar;
+}

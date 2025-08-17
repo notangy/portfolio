@@ -13,6 +13,7 @@ import React from "react";
 import "../css/Iam.css";
 import chunk from "lodash/chunk";
 import { Tooltip } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 interface HexagonProps {
   tooltip: string;
@@ -38,7 +39,7 @@ const hexagonRows = chunk(hexagons, hexagonsPerRow);
 
 function Iam() {
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <div className=" mx-auto p-4">
       <small className="block text-gray-400 mb-4">Last updated 08/2025</small>
 
       <h1 className="text-3xl font-bold mb-3">Nice of you to stop by!</h1>
@@ -86,11 +87,8 @@ function Iam() {
               She is interested in DevOps and is currently learning Java ☕️
             </li>
             <li>
-              Scared of spiders, but doesn't mind{" "}
-              <a href="./snake" className="underline text-blue-400">
-                snakes
-              </a>
-              🐍
+              Scared of spiders, but doesn't mind
+              <Link to="snake"> snakes</Link> 🐍
             </li>
           </ul>
         </div>
