@@ -55,7 +55,7 @@ function Iam() {
             {hexagonRows.map((row: HexagonProps[], rowIndex: number) => (
               <div key={rowIndex} className="hexRow flex justify-center mb-2">
                 {row.map((hex, index) => (
-                  <div key={index} className="mx-1">
+                  <div key={index} className="mx-1 bg-black">
                     <Tooltip
                       content={<div className="p-2">{hex.tooltip}</div>}
                       placement="bottom"
