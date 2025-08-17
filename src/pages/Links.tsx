@@ -28,7 +28,7 @@ export default function Links() {
         <h2 className="text-3xl font-bold mb-8">
           Thanks for scrolling this far!
         </h2>
-        <p className="text-gray-600 mb-12">
+        <p className="mb-12">
           I’m always open to collaborations, new opportunities, or just a
           friendly chat! Reach out through any of the platforms below:
         </p>

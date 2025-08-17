@@ -72,7 +72,7 @@ function Iam() {
                       placement="bottom"
                     >
                       <hex.icon
-                        className="items-center m-auto mt-8 text-white transition-transform hover:scale-110"
+                        className="items-center m-auto mt-8 text-black transition-transform hover:scale-110"
                         size={30}
                       />
                     </Tooltip>
@@ -92,6 +92,7 @@ function Iam() {
               honors in Computing 🎓
             </li>
             <li>Her favorite Transformer is Soundwave 📼</li>
+            <li>Her favorite anime is Tengen Toppa Gurren Lagann 🌀</li>
             <li>When she isn't coding, she likes to sew custom plushies 🪡</li>
             <li>
               She is interested in DevOps and is currently learning Java ☕️

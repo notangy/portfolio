@@ -43,13 +43,13 @@ export default function Projects() {
           >
             <div>
               <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-gray-900 mb-4">{project.description}</p>
+              <p className="mb-4">{project.description}</p>
 
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map((tech, i) => (
                   <span
                     key={i}
-                    className="px-2 py-1 text-sm rounded-lg bg-gray-700 text-white"
+                    className="px-2 py-1 text-sm rounded-lg bg-(--neon-color) text-white"
                   >
                     {tech}
                   </span>
