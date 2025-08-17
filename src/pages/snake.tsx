@@ -9,6 +9,8 @@ import {
   LuZoomOut,
 } from "react-icons/lu";
 
+import snakeDead from "../assets/snakeDead.gif";
+
 /*
 TODO
 
@@ -74,8 +76,16 @@ const SnakeGame: React.FC = () => {
 
   const [foodIcon, setFoodIcon] = useState<React.ReactNode>(defaultFoodIcon);
 
+  const [playCount, setPlayCount] = useState(0); // slightly hacky way to force death gif to play
+
   const directionRef = useRef(direction);
   directionRef.current = direction;
+
+  const setDead = () => {
+    setGameOver(true);
+    setIsPlaying(false);
+    setPlayCount((prev) => prev + 1);
+  };
 
   // Handle keyboard input only when playing
   useEffect(() => {
@@ -112,8 +122,7 @@ const SnakeGame: React.FC = () => {
         const nextHunger = Math.max(prev - decreaseAmount, 0);
 
         if (nextHunger === 0) {
-          setGameOver(true);
-          setIsPlaying(false);
+          setDead();
         }
 
         return nextHunger;
@@ -142,8 +151,7 @@ const SnakeGame: React.FC = () => {
 
         // Checking collision with body
         if (prev.some(([r, c]) => r === wrappedRow && c === wrappedCol)) {
-          setGameOver(true);
-          setIsPlaying(false);
+          setDead();
           return prev;
         }
 
@@ -292,6 +300,17 @@ const SnakeGame: React.FC = () => {
                 }}
               >
                 {isFood ? foodIcon : ""}
+                {gameOver && isSnake && (
+                  <img
+                    key={playCount}
+                    src={`${snakeDead}?reload=${playCount}`} /* need to append playcount to force reload*/
+                    style={{
+                      position: "absolute",
+                      width: "40px",
+                      height: "40px",
+                    }}
+                  />
+                )}
               </div>
             );
           })}
