@@ -42,7 +42,7 @@ const fruits = [LuCherry, LuGrape, LuApple, LuBanana];
 
 // Keep track of how many fruits are on the board
 // todo Each fruit has 10 seconds to be eaten before it disappears
-let fruitsOnBoard = [];
+// let fruitsOnBoard = [];
 
 let defaultFoodIcon = <LuApple color="var(--neon-color)" size={ICON_SIZE} />;
 
@@ -63,7 +63,7 @@ const SnakeGame: React.FC = () => {
   const [direction, setDirection] = useState<Coord>(INITIAL_DIRECTION);
   const [boardSize, setBoardSize] = useState(DEFAULT_BOARD_SIZE);
   const [food, setFood] = useState<Coord>(() =>
-    getRandomFoodPosition(INITIAL_SNAKE),
+    getRandomFoodPosition(INITIAL_SNAKE)
   );
 
   const [hunger, setHunger] = useState<number>(100);
@@ -201,7 +201,7 @@ const SnakeGame: React.FC = () => {
               size={25}
               onClick={() =>
                 setBoardSize(
-                  boardSize == MAX_BOARD_SIZE ? boardSize : boardSize + 5,
+                  boardSize == MAX_BOARD_SIZE ? boardSize : boardSize + 5
                 )
               }
             />
@@ -210,7 +210,7 @@ const SnakeGame: React.FC = () => {
               size={25}
               onClick={() =>
                 setBoardSize(
-                  boardSize == MIN_BOARD_SIZE ? boardSize : boardSize - 5,
+                  boardSize == MIN_BOARD_SIZE ? boardSize : boardSize - 5
                 )
               }
             />

@@ -13,14 +13,14 @@ const typingText: string[] = [
   "Robert') DROP TABLE Students;",
 ];
 
-const spinningWords = [
-  "Software Engineer",
-  "Frontend",
-  "Backend",
-  "UI/UX",
-  "DevOps",
-  "CI/CD",
-];
+// const spinningWords = [
+//   "Software Engineer",
+//   "Frontend",
+//   "Backend",
+//   "UI/UX",
+//   "DevOps",
+//   "CI/CD",
+// ];
 
 function Home() {
   return (

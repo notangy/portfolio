@@ -7,20 +7,15 @@ const gameStatus = {
   WINNER: "Winner",
 };
 
-const player = {
-  X: "X",
-  O: "O",
-};
-
-let status: gameStatus = gameStatus.ONGOING;
-let winner = null;
+let status: string = gameStatus.ONGOING;
+let winner: string = "";
 
 const createEmptyBoard = () =>
   Array(3)
     .fill(null)
     .map(() => Array(3).fill(""));
 
-function renderStatus(status, currentPlayer) {
+function renderStatus(status: string, currentPlayer: string) {
   switch (status) {
     case gameStatus.TIE:
       return status;
@@ -150,7 +145,7 @@ const TicTacToe: React.FC = () => {
           {board.map((row, rowIndex) => {
             return (
               <div className="row" key={rowIndex}>
-                {row.map((y, colIndex) => {
+                {row.map((_, colIndex) => {
                   const position = rowIndex * 3 + colIndex;
                   return (
                     <div
