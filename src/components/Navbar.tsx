@@ -13,8 +13,11 @@ const scrollToSection = (id: string) => {
 
 export default function Navbar() {
   return (
-    <nav className="navbar w-full h-12 p-15 flex items-center relative mb-20">
-      <div className="logo-box text-2xl font-bold">
+    <nav className="navbar w-full h-12 p-15 flex items-center relative mb-20 ">
+      <div
+        className="logo-box text-2xl font-bold cursor-pointer"
+        onClick={() => (window.location.href = "/portfolio")}
+      >
         <span>N</span>
         <sub className="text-xs top-3">2</sub>
         <div className="atom" />
