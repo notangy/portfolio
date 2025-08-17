@@ -1,1 +1,2 @@
-WIP portfolio site in Typescript and React. Will be hosted on github.io as a page soon
+Personal written in Typescript and React.
+See it live here! https://notangy.github.io/portfolio/
