@@ -16,7 +16,8 @@ const projectList = [
   // },
   {
     title: "AO3lytics",
-    description: `A CLI tool and self-hosted dashboard to aggregate AO3 user statistics.`,
+    description: `A CLI tool and (eventually) self-hosted dashboard to aggregate historical AO3 user statistics and save bookmarks.
+    This was made to circumvent the lack of an official API from AO3.`,
     tech: ["Python"],
     links: [{ label: "GitHub", url: "https://github.com/notangy/AO3lytics" }],
   },
