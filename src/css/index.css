@@ -53,6 +53,18 @@ h1 {
   line-height: 1.1;
 }
 
+.neon-border {
+  --tw-border-opacity: 1;
+  border-color: rgb(
+    var(--neon-color-rgb, 0, 255, 255) / var(--tw-border-opacity)
+  );
+  display: inline-block; /* shrink-wrap to the image */
+  border-width: 2px;
+  border-style: solid var(--neon-color);
+  animation: neon-glow 2s ease-in-out infinite;
+  border-radius: 20%;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

@@ -7,13 +7,13 @@ const projectList = [
     tech: ["Python", "Huggingface", "LoRA"],
     links: [{ label: "GitHub", url: "https://github.com/notangy/DisClone" }],
   },
-  {
-    title: "Movie Diary",
-    description: `Studies show that people spend more time choosing something to watch than actually watching things.
-      This is a small helper site to track movie/show history, offer recommendations, and other neat things.`,
-    tech: ["TypeScript", "React", "Tailwind CSS"],
-    links: [],
-  },
+  // {
+  //   title: "Movie Diary",
+  //   description: `Studies show that people spend more time choosing something to watch than actually watching things.
+  //     This is a small helper site to track movie/show history, offer recommendations, and other neat things.`,
+  //   tech: ["TypeScript", "React", "Tailwind CSS"],
+  //   links: [],
+  // },
   {
     title: "AO3lytics",
     description: `A CLI tool and self-hosted dashboard to aggregate AO3 user statistics.`,
@@ -57,7 +57,7 @@ export default function Projects() {
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 neon-bord">
               {project.links.map((link, i) => (
                 <a key={i} href={link.url} className="underline">
                   {link.label}

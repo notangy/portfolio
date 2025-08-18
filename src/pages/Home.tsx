@@ -27,12 +27,12 @@ const typingText: string[] = [
 
 const imageCarousel = [
   {
-    url: "https://github.com/notangy.png",
-    caption: "My current GitHub avatar",
-  },
-  {
     url: Alfie,
     caption: "Me & Alfie",
+  },
+  {
+    url: "https://github.com/notangy.png",
+    caption: "My current GitHub avatar",
   },
   {
     url: Fancy,

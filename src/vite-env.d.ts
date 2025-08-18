@@ -7,3 +7,7 @@ declare module "lodash/chunk" {
   import chunk from "lodash/chunk";
   export default chunk;
 }
+
+// swiper.d.ts
+declare module "swiper/css" {}
+declare module "swiper/css/navigation" {}
