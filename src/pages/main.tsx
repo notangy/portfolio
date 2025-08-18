@@ -32,9 +32,9 @@ const secretRoutes: MenuItem[] = [
 createRoot(document.getElementById("root")!).render(
   <HashRouter>
     <CustomCursor />
-    <div className="flex h-screen w-screen p-4 overflow-scroll">
+    <div className="flex min-h-screen w-screen p-4">
       <Navbar />
-      <div className="w-full">
+      <div className="w-full overflow-y-auto">
         <Routes>
           <Route
             path="/"

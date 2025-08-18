@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import type { JSX } from "react/jsx-runtime";
 
 interface MousePos {
   x: number;
@@ -10,18 +9,19 @@ interface MousePos {
 const isTouchDevice = () =>
   "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
-export default function CustomCursor(): JSX.Element {
+export default function CustomCursor(): React.ReactNode {
+  if (isTouchDevice()) {
+    return null; // don't render on mobile
+  }
+
   const [mousePos, setMousePos] = useState<MousePos>({ x: 0, y: 0 });
   const [isClickable, setIsClickable] = useState(false);
 
   useEffect(() => {
-    if (isTouchDevice()) {
-      return; // skip attaching cursor events
-    }
     const move = (e: MouseEvent) => {
       const pos = { x: e.clientX, y: e.clientY };
       setMousePos(pos);
-      // Check if the element under cursor is clickable
+
       const target = e.target as HTMLElement | null;
       const clickable =
         target &&
