@@ -7,16 +7,17 @@ interface MousePos {
   y: number;
 }
 
-interface MousePos {
-  x: number;
-  y: number;
-}
+const isTouchDevice = () =>
+  "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
 export default function CustomCursor(): JSX.Element {
   const [mousePos, setMousePos] = useState<MousePos>({ x: 0, y: 0 });
   const [isClickable, setIsClickable] = useState(false);
 
   useEffect(() => {
+    if (isTouchDevice()) {
+      return; // skip attaching cursor events
+    }
     const move = (e: MouseEvent) => {
       const pos = { x: e.clientX, y: e.clientY };
       setMousePos(pos);
