@@ -79,32 +79,21 @@ function Home() {
         </p>
       </div>
 
-      {/* <div className="neon-border rounded-[20%] inline-block">
-          <img
-            src={"https://github.com/notangy.png"}
-            
-          />
-        </div>
-        */}
-
       <div className="w-full md:w-1/2 p-5">
         <Swiper
           modules={[Navigation]}
           slidesPerView={1}
           navigation
-          className="min-w-[200px]"
+          className="w-full"
           loop={true}
         >
           {imageCarousel.map((img, index) => (
-            <SwiperSlide
-              key={index}
-              className="flex justify-center items-center p-20"
-            >
-              <div className="overflow-hidden rounded-[20%] neon-border w-full ">
+            <SwiperSlide key={index} className=" p-20">
+              <div className="overflow-hidden rounded-[20%] neon-border">
                 <img
                   src={img.url}
                   alt={`Avatar ${index + 1}`}
-                  className="w-full h-auto object-cover"
+                  className="w-full"
                 />
               </div>
               <p className="mt-3 text-center text-sm">Image: {img.caption}</p>

@@ -37,7 +37,9 @@ export default function Navbar() {
       {/* Mobile Overlay */}
       <div
         className={`fixed inset-0 bg-black/40 transition-opacity duration-300 md:hidden ${
-          open ? "opacity-100 " : "opacity-0"
+          open
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setOpen(false)}
       />
