@@ -9,7 +9,7 @@ import {
   SiDocker,
 } from "react-icons/si";
 import { FaGolang } from "react-icons/fa6";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../css/Iam.css";
 import chunk from "lodash/chunk";
 import { Tooltip } from "@material-tailwind/react";
@@ -33,12 +33,35 @@ const hexagons: HexagonProps[] = [
   { tooltip: "Docker", icon: SiDocker },
 ];
 
-// Split hexagons into rows
-
-let hexagonsPerRow = 5; // Number of hexagons per row
-const hexagonRows = chunk(hexagons, hexagonsPerRow);
-
 function Iam() {
+  const [hexagonsPerRow, setHexagonsPerRow] = useState(5);
+  const [hexagonRows, setHexagonRows] = useState(
+    chunk(hexagons, hexagonsPerRow)
+  );
+  useEffect(() => {
+    function updateHexPerRow() {
+      const width = window.innerWidth;
+
+      if (width < 640) {
+        setHexagonsPerRow(2); // small screens
+      } else if (width < 1024) {
+        setHexagonsPerRow(4); // tablets
+      } else {
+        setHexagonsPerRow(5); // desktop
+      }
+    }
+
+    updateHexPerRow();
+
+    window.addEventListener("resize", updateHexPerRow);
+    return () => window.removeEventListener("resize", updateHexPerRow);
+  }, []);
+
+  // Update rows whenever hexagonsPerRow changes
+  useEffect(() => {
+    setHexagonRows(chunk(hexagons, hexagonsPerRow));
+  }, [hexagonsPerRow]);
+
   return (
     <div className=" mx-auto p-4">
       <small className="block text-gray-400 mb-4">Last updated 08/2025</small>
