@@ -88,7 +88,10 @@ function Home() {
           loop={true}
         >
           {imageCarousel.map((img, index) => (
-            <SwiperSlide key={index} className=" p-20">
+            <SwiperSlide
+              key={index}
+              className="p-12 md:p-12 flex flex-col items-center"
+            >
               <div className="overflow-hidden rounded-[20%] neon-border">
                 <img
                   src={img.url}
