@@ -39,12 +39,18 @@ export default function Links() {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-md border hover:shadow-lg hover:border-gray-300 transition-all duration-300"
+              className="group flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-md border hover:shadow-lg hover:neon-border hover:border-gray-300 transition-all duration-300"
             >
-              <span className="text-gray-700 group-hover:text-purple-600 transition-colors">
+              <span
+                role="button"
+                className="text-gray-700 group-hover:text-purple-600 transition-colors"
+              >
                 {social.icon}
               </span>
-              <span className="font-medium text-gray-800 group-hover:text-purple-600 transition-colors">
+              <span
+                role="button"
+                className="font-medium text-gray-800 group-hover:text-purple-600 transition-colors"
+              >
                 {social.name}
               </span>
             </a>

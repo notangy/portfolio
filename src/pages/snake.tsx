@@ -205,7 +205,6 @@ const SnakeGame: React.FC = () => {
           <span className="flex items-center gap-2">
             Use the zoom icons to increase and decrease the size of the board.
             <LuZoomIn
-              className="cursor-pointer"
               size={25}
               onClick={() =>
                 setBoardSize(
@@ -214,7 +213,6 @@ const SnakeGame: React.FC = () => {
               }
             />
             <LuZoomOut
-              className="cursor-pointer"
               size={25}
               onClick={() =>
                 setBoardSize(
@@ -342,7 +340,6 @@ const SnakeGame: React.FC = () => {
                       padding: "10px 20px",
                       fontSize: "18px",
                       fontWeight: "bold",
-                      cursor: "pointer",
                       borderRadius: "8px",
                       border: "none",
                       backgroundColor: "red",
@@ -355,7 +352,7 @@ const SnakeGame: React.FC = () => {
               ) : (
                 <button
                   onClick={startGame}
-                  className="bg-green-600 bold cursor-pointer b-0 rounded-[8px]"
+                  className="bg-green-600 bold b-0 rounded-[8px]"
                   style={{
                     padding: "12px 24px",
                     fontSize: "20px",

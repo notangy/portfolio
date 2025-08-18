@@ -24,8 +24,9 @@
   cursor: none;
 }
 
+a,
 button {
-  cursor: pointer;
+  cursor: none;
 }
 
 section {

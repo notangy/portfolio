@@ -13,7 +13,7 @@ const scrollToSection = (id: string) => {
 
 export default function NavLinks() {
   return (
-    <ul className="flex flex-col md:flex-row gap-6 mx-auto">
+    <ul className="flex flex-col md:flex-row gap-6 mx-auto ">
       {menuItems.map((item) => (
         <li key={item.label} className="highlight">
           <button

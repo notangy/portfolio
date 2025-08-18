@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <nav className="navbar w-full h-12 p-15 flex items-center relative mb-20 ">
       <div
-        className="logo-box text-2xl font-bold cursor-pointer"
+        className="logo-box text-2xl font-bold"
         onClick={() => (window.location.href = "/portfolio")}
       >
         <span>N</span>
@@ -37,9 +37,7 @@ export default function Navbar() {
       {/* Mobile Overlay */}
       <div
         className={`fixed inset-0 bg-black/40 transition-opacity duration-300 md:hidden ${
-          open
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+          open ? "opacity-100 " : "opacity-0"
         }`}
         onClick={() => setOpen(false)}
       />
